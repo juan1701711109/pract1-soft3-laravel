@@ -16,4 +16,6 @@ npm i vue-loader
 
 npm i @vue/compiler-sfc
 
-npm i resolve-url-loader@^4.0.0 --save-dev --legacy-peer-deps
+npm i resolve-url-loader@^4.0.0 --save-dev --legacy-peer-deps}
+
+php artisan make:request PostRequest // Creacion Request

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create');
+        return view('dashboard.posts.create', ['post' => new Post]);
     }
 
     /**
@@ -33,9 +34,10 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        Post::create($request->validated());
+        return back()->with('status', 'Succesfull Publication Created');
     }
 
     /**
@@ -44,9 +46,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Request $post)
     {
-        //
+        return view('dashboard.posts.show', ['post' => $post]);
     }
 
     /**
@@ -57,7 +59,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('dashboard.posts.edit');
+        return view('dashboard.posts.edit', ['post' => $post]);
     }
 
     /**
@@ -67,9 +69,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $post->update($request->validated());
+        return back()->with('status', 'Succesfull Edit Publication');
     }
 
     /**
@@ -80,6 +83,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return back()->with('status', 'Succesfull Publication Deleted');
     }
 }
