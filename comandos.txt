@@ -1,1 +1,19 @@
 php artisan migrate
+
+php artisan make:migration create_posts_table
+
+php artisan migrate:refresh
+
+php artisan make:controller PostController --resource --model=Post
+
+php artisan r:l // Consultar rutas del proyecto
+
+composer require laravel/ui --dev
+
+php artisan ui bootstrap
+
+npm i vue-loader
+
+npm i @vue/compiler-sfc
+
+npm i resolve-url-loader@^4.0.0 --save-dev --legacy-peer-deps
