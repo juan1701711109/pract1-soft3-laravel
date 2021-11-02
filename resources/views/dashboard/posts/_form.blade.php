@@ -6,7 +6,7 @@
 </div>
 
 <div class="form-group">
-    <select name="state_publication" id="state_publication">
+    <select class="form-control" name="state_publication" id="state_publication">
         <option value="">Published</option>
         <option value="">Reject</option>
         <option value="">In_Review</option>
