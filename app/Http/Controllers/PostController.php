@@ -47,7 +47,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $post)
+    public function show(Post $post)
     {
         return view('dashboard.posts.show', ['post' => $post]);
     }
