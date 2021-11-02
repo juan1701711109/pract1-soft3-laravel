@@ -1,28 +1,26 @@
 @extends('dashboard.master')
 @section('content')
-    <h6>List Posts</h6>
+    <h6>List Category</h6>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Codigo</th>
-                <th>Publlicacion</th>
+                <th>Name</th>
                 <th>Contenido</th>
-                <th>Estado</th>
                 <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($posts as $post)
+            @foreach ($categories as $category)
             <tr>
-                <td scope="row">{{ $post -> id}}</td>
-                <td>{{ $post -> publication}}</td>
-                <td>{{ $post -> content_publication}}</td>
-                <td>{{ $post -> state_publication}}</td>
-                <td>{{ $post -> created_at}}</td>
-                <td><a href="{{ route('post.edit', $post -> id)}}" class="btn btn-info">Editar</a></td>
-                <td><a href="{{ route('post.show', $post -> id)}}" class="btn btn-info">Ver</a></td>
-                <td><a class="btn btn-danger" data-id="{{ $post->id }}" data-toggle="modal" data-target="#exampleModal">Eliminar</a></td>
+                <td scope="row">{{ $category -> id}}</td>
+                <td>{{ $category -> category_name}}</td>
+                <td>{{ $category -> content_publication}}</td>
+                <td>{{ $category -> created_at}}</td>
+                <td><a href="{{ route('category.edit', $category -> id)}}" class="btn btn-info">Editar</a></td>
+                <td><a href="{{ route('category.show', $category -> id)}}" class="btn btn-info">Ver</a></td>
+                <td><a class="btn btn-danger" data-id="{{ $category->id }}" data-toggle="modal" data-target="#exampleModal">Eliminar</a></td>
             </tr>
             @endforeach
             
@@ -30,7 +28,7 @@
     </table>
 @endsection
 
-{{ $posts->links()}}
+{{ $categories->links()}}
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -42,12 +40,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                ¿Seguro deseas eliminar la publicación?
+                ¿Seguro deseas eliminar la categoría?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <form id="deletePost" action="{{ route('post.destroy',0) }}" method="POST"
-                data-action="{{ route('post.destroy',0) }}" >
+                <form id="deleteCategory" action="{{ route('category.destroy',0) }}" method="POST"
+                data-action="{{ route('category.destroy',0) }}" >
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn btn-primary">Save changes</button>
@@ -62,12 +60,12 @@
             // Button that triggered the modal
             var button = $(event.relatedTarget)
             var id = button.data('id')
-            action = $('#deletePost').attr('data-action').slice(0,-1)
+            action = $('#deleteCategory').attr('data-action').slice(0,-1)
             action += id
             console.log(action)
-            $('#deletePost').attr('action', action)
+            $('#deleteCategory').attr('action', action)
             var modal = $(this)
-            modal.find('.modal-title').text('Vas a eliminar la publicación: ' + id)
+            modal.find('.modal-title').text('Vas a eliminar la categoria: ' + id)
         })
     }
 
