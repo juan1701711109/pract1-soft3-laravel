@@ -1,5 +1,6 @@
 @extends('dashboard.master')
 @section('content')
+    <a href="{{ route('category.create')}}" class="btn btn-info btn-small mb-3">Create category</a>
     <h6>List Category</h6>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>

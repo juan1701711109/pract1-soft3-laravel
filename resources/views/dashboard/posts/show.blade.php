@@ -19,5 +19,5 @@
     <textarea readonly class="form-control" name="content_publication" id="content_publication" placeholder="Content of publication" cols="30" rows="10">{{ $post->content_publication}}
     </textarea>
 </div>
-<button class="btn btn-danger" href="{{ URL::previous() }}">Aceptar</button>
+<a class="btn btn-danger" href="{{ URL::previous() }}">Aceptar</a>
 @endsection

@@ -6,10 +6,19 @@
 </div>
 
 <div class="form-group">
-    <select class="form-control" name="state_publication" id="state_publication">
-        <option value="">Published</option>
-        <option value="">Reject</option>
-        <option value="">In_Review</option>
+    <select class="custom-select" aria-label="Default" name="category_id" id="category_id">
+        <option selected disabled>Select an Option</option>
+        @foreach ($categories as $category_name=>$id)
+            <option {{ $post -> category_id == $id ? 'selected="selected"' : ''}} value="{{ $id }}">
+                {{$category_name}}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
+    <select class="custom-select" name="state_publication" id="state_publication">
+        @include('dashboard.components.state_options', ['val'=>$post->state_publication])
     </select>
 </div>
 
@@ -19,4 +28,4 @@
 </div>
 
 <button type="submit" class="btn btn-success">Save</button>
-<button class="btn btn-danger" href="{{ URL::previous() }}">Discard</button>
+<a class="btn btn-danger" href="{{ route('post.index') }}">Discard</a>

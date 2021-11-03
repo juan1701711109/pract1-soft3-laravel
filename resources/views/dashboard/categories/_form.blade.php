@@ -11,4 +11,4 @@
 </div>
 
 <button type="submit" class="btn btn-success">Save</button>
-<button class="btn btn-danger" href="{{ URL::previous() }}">Discard</button>
+<a class="btn btn-danger" href="{{ route('category.index') }}">Discard</a>
