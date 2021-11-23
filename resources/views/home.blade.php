@@ -17,10 +17,10 @@
                     {{ __('You are logged in!') }}
                     @auth
                         <div>
-                            Bienvenido al sistema {{ auth()->user()->name }}
+                            Welocome to system {{ auth()->user()->name }}
                         </div>
                         <div>
-                            Rol del usuario: {{ auth()->user()->rol->name }}
+                            User Role: {{auth()->user()->rol->name }} - {{ auth()->user()->rol->description }}
                         </div>
                     @endauth
                 </div>
