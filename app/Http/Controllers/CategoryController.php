@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         //$this->middleware('auth')->only('index', 'show');
         //$this->middleware('auth')->except('create', 'store', 'edit', 'update', 'destroy');
-        $this->middleware('auth');
+        $this->middleware(['auth', 'rol.admin']);
     }
     /**
      * Display a listing of the resource.

@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use App\Http\Requests\RolRequest;
 
 class RolController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('auth')->only('index', 'show');
+        //$this->middleware('auth')->except('create', 'store', 'edit', 'update', 'destroy');
+        $this->middleware(['auth', 'rol.admin']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +31,7 @@ class RolController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.rols.create');
     }
 
     /**
@@ -33,9 +40,10 @@ class RolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RolRequest $request)
     {
-        //
+        Rol::create($request->validated());
+        return back()->with('status', 'Succesfull Role Created');
     }
 
     /**

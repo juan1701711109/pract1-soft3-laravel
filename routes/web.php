@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::prefix('dashboard')->group(function () {
     Route::resource('post', PostController::class);
@@ -26,5 +27,5 @@ Route::prefix('dashboard')->group(function () {
 });
 
 Auth::routes();
-
+Route::resource('rol', RolController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
